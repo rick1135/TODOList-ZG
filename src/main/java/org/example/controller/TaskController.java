@@ -33,4 +33,8 @@ public class TaskController {
     public List<Task> listarPorStatus(TaskStatus status){
         return taskService.listarPorStatus(status);
     }
+
+    public boolean excluirTarefa(int id){
+        return taskService.excluirTarefa(id);
+    }
 }
