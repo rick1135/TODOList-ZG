@@ -33,7 +33,7 @@ public class TaskService {
         return novaTarefa;
     }
 
-    public List<Task> listarTodas(){
+    public List<Task> listarTarefas(){
         return taskRepository.listarTarefas();
     }
 
