@@ -31,6 +31,7 @@ public class ConsoleView {
             System.out.println("5 - Listar tarefas por status");
             System.out.println("6 - Atualizar tarefa");
             System.out.println("7 - Excluir tarefa");
+            System.out.println("8 - Listar quantidade de tarefas por status");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -62,6 +63,9 @@ public class ConsoleView {
                     break;
                 case 7:
                     excluirTarefa();
+                    break;
+                case 8:
+                    listarQtdStatus();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -227,4 +231,17 @@ public class ConsoleView {
         }
     }
 
+    private void listarQtdStatus(){
+        int qtdTodo = controller.contarPorStatus(TaskStatus.TODO);
+        int qtdDoing = controller.contarPorStatus(TaskStatus.DOING);
+        int qtdDone = controller.contarPorStatus(TaskStatus.DONE);
+        int qtdGeral = controller.listarTarefas().size();
+
+        System.out.println("----------");
+        System.out.println("Quantidade de tarefas por status");
+        System.out.println("----------");
+        System.out.println("A fazer (TODO): " + qtdTodo);
+        System.out.println("Fazendo (DOING): " + qtdDoing);
+        System.out.println("Feitas (DONE): " + qtdDone);
+    }
 }

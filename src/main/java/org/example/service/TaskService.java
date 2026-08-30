@@ -98,4 +98,12 @@ public class TaskService {
 
         return taskRepository.atualizar(tarefaAtual);
     }
+
+    public int contarPorStatus(TaskStatus status){
+        int total=0;
+        for(Task tarefa:taskRepository.listarTarefas()){
+            if(tarefa.getStatus()==status) total++;
+        }
+        return total;
+    }
 }

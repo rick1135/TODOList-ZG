@@ -45,4 +45,8 @@ public class TaskController {
     public boolean atualizarTarefa(int id, String nome, String descricao, LocalDate dataFinal, int prioridade, String categoria, TaskStatus status){
         return taskService.atualizarTarefa(id, nome, descricao, dataFinal, prioridade, categoria, status);
     }
+
+    public int contarPorStatus(TaskStatus status){
+        return taskService.contarPorStatus(status);
+    }
 }
