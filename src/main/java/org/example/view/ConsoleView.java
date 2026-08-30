@@ -25,7 +25,7 @@ public class ConsoleView {
         while (opcao!=0){
             System.out.println("\n----- Bem-vindo ao TODO List");
             System.out.println("1 - Criar Tarefa");
-            System.out.println("2 - Listar todas tarefas ordenadas por prioridade)");
+            System.out.println("2 - Listar todas tarefas ordenadas por prioridade");
             System.out.println("3 - Listar tarefas por categoria");
             System.out.println("4 - Listar tarefas por prioridade");
             System.out.println("5 - Listar tarefas por status");
@@ -146,7 +146,7 @@ public class ConsoleView {
     }
 
     private void excluirTarefa(){
-        System.out.println("Insira o ID da tarefa a ser remov: ");
+        System.out.println("Insira o ID da tarefa a ser removida: ");
         try {
             int id = Integer.parseInt(scanner.nextLine());
             boolean sucesso = controller.excluirTarefa(id);
