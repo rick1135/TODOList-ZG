@@ -41,7 +41,7 @@ O projeto segue a separação de responsabilidades em camadas:
 
 ---
 
-## Formato de Persistência (`tarefas.txt`)
+## Formato de persistência (`tarefas.txt`)
 
 Os dados são armazenados linha por linha com campos delimitados por ponto e vírgula (`;`):
 
@@ -81,3 +81,5 @@ id;nome;descricao;dataFinal;prioridade;categoria;status
    ```
 
 ---
+
+Feito por Alberto Henrique
