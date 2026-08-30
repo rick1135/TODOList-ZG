@@ -29,7 +29,8 @@ public class ConsoleView {
             System.out.println("3 - Listar tarefas por categoria");
             System.out.println("4 - Listar tarefas por prioridade");
             System.out.println("5 - Listar tarefas por status");
-            System.out.println("6 - Excluir tarefa");
+            System.out.println("6 - Atualizar tarefa");
+            System.out.println("7 - Excluir tarefa");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -57,6 +58,9 @@ public class ConsoleView {
                     listarPorStatus();
                     break;
                 case 6:
+                    atualizarTarefa();
+                    break;
+                case 7:
                     excluirTarefa();
                     break;
                 case 0:
@@ -171,6 +175,56 @@ public class ConsoleView {
         }
     }
 
+    private void atualizarTarefa(){
+        System.out.println("Insira o ID da tarefa a ser atualizada: ");
+        try {
+            int id = Integer.parseInt(scanner.nextLine());
+            Task tarefa = controller.buscarPorId(id);
 
+            if (tarefa==null){
+                System.out.println("Não foi encontrada tarefa com ID " + id);
+                return;
+            }
+
+            System.out.println("\nTarefa atual:");
+            System.out.println(tarefa);
+            System.out.println("\n--- Insira a tarefa atualizada ---");
+
+            System.out.println("Novo nome: ");
+            String nome = scanner.nextLine();
+
+            System.out.println("Novo descricao: ");
+            String descricao = scanner.nextLine();
+
+            System.out.print("Nova data final (dd/MM/yyyy): ");
+            String dataStr = scanner.nextLine();
+            LocalDate data = LocalDate.parse(dataStr, formatter);
+
+            System.out.print("Nova prioridade (de 1 a 5): ");
+            int prioridade = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Nova categoria: ");
+            String categoria = scanner.nextLine();
+
+            System.out.println("Novo Status:");
+            System.out.println("1 - TODO (a fazer)");
+            System.out.println("2 - DOING (fazendo)");
+            System.out.println("3 - DONE (finalizada)");
+            System.out.print("Opção: ");
+            int statusOpcao = Integer.parseInt(scanner.nextLine());
+
+            TaskStatus status = TaskStatus.TODO;
+            if (statusOpcao == 2) {
+                status = TaskStatus.DOING;
+            } else if (statusOpcao == 3) {
+                status = TaskStatus.DONE;
+            }
+
+            boolean sucesso = controller.atualizarTarefa(id, nome, descricao, data, prioridade, categoria, status);
+            if(sucesso) System.out.println("Tarefa atualizada com sucesso!");
+        } catch (Exception e){
+            System.out.println("Erro ao atualizar tarefa!");
+        }
+    }
 
 }

@@ -30,6 +30,24 @@ public class TaskRepository {
         return tarefas;
     }
 
+    public Task buscarPorId(int id) {
+        for(Task tarefa : tarefas){
+            if(tarefa.getId()==id) return tarefa;
+        }
+        return null;
+    }
+
+    public boolean atualizar(Task tarefaAtualizada){
+        for(int i=0; i<tarefas.size(); i++){
+            if(tarefas.get(i).getId()==tarefaAtualizada.getId()){
+                tarefas.remove(i);
+                salvarRebalanceando(tarefaAtualizada);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean excluirPorId(int id){
         for(int i=0; i<tarefas.size(); i++){
             if(tarefas.get(i).getId()==id){

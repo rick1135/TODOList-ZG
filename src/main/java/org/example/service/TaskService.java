@@ -67,4 +67,35 @@ public class TaskService {
     public boolean excluirTarefa(int id){
         return taskRepository.excluirPorId(id);
     }
+
+    public Task buscarPorId(int id){
+        return taskRepository.buscarPorId(id);
+    }
+
+    public boolean atualizarTarefa(int id, String nome, String descricao, LocalDate dataFinal, int prioridade, String categoria, TaskStatus status){
+        Task tarefaAtual = taskRepository.buscarPorId(id);
+        if(tarefaAtual==null){
+            System.out.println("Tarefa não encontrada!");
+            return false;
+        }
+
+        if(nome==null || nome.trim().isEmpty()){
+            System.out.println("Nome da tarefa é obrigatório!");
+            return false;
+        }
+
+        if(prioridade<1 || prioridade>5){
+            System.out.println("Prioridade deve ser de 1 a 5!");
+            return false;
+        }
+
+        tarefaAtual.setNome(nome);
+        tarefaAtual.setDescricao(descricao);
+        tarefaAtual.setDataFinal(dataFinal);
+        tarefaAtual.setPrioridade(prioridade);
+        tarefaAtual.setCategoria(categoria);
+        tarefaAtual.setStatus(status);
+
+        return taskRepository.atualizar(tarefaAtual);
+    }
 }

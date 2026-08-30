@@ -37,4 +37,12 @@ public class TaskController {
     public boolean excluirTarefa(int id){
         return taskService.excluirTarefa(id);
     }
+
+    public Task buscarPorId(int id){
+        return taskService.buscarPorId(id);
+    }
+
+    public boolean atualizarTarefa(int id, String nome, String descricao, LocalDate dataFinal, int prioridade, String categoria, TaskStatus status){
+        return taskService.atualizarTarefa(id, nome, descricao, dataFinal, prioridade, categoria, status);
+    }
 }
