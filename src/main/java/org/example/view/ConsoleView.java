@@ -14,7 +14,7 @@ public class ConsoleView {
     private Scanner scanner;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public ConsoleView(TaskController controller, Scanner scanner) {
+    public ConsoleView(TaskController controller) {
         this.controller = controller;
         this.scanner = new Scanner(System.in);
     }
@@ -150,7 +150,10 @@ public class ConsoleView {
         try {
             int id = Integer.parseInt(scanner.nextLine());
             boolean sucesso = controller.excluirTarefa(id);
-            if(sucesso) System.out.println("Tarefa e");
+            if(sucesso) System.out.println("Tarefa removida com sucesso!");
+            else System.out.println("Tarefa com ID " + id + " não encontrada!");
+        } catch(Exception e){
+            System.out.println("ID inválido!");
         }
     }
 
